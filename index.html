@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Akinator Intélligent</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+      <script src="angular.js"></script>
+    <script src="akin.js"></script>
+</head>
+
+<body ng-app="ajs" ng-controller="ExCtrl">
+
+    <div  id="keepo">
+        
+        <div ng-show="menu">
+            <h1>Bienvenue dans Akinator!</h1>
+            <h3>Pour débuter une partie  clique sur Jouer</h3>
+            <div id="controls">
+            <input type="button" id="playButton" value="Jouer" ng-click="play()">
+        </div>
+        </div>
+
+        <div ng-show="questionMode">
+        <h1>Question {{ num }}</h1>
+            <div id="question">
+                {{ question.texte }}<br>
+            </div>
+            <div id="controls">
+                <input type="button"  id="yesButton" value="Oui" ng-click="yes()">
+                <input type="button" id="noButton" value="Non" ng-click="no()">
+                <input type="button" id="maybeButton" value="Peut etre" ng-click="maybe()">
+            </div>
+        </div>
+
+
+        <div ng-show="resultMode" class="ng-hide">
+            <h1>Je pense à:</h1>
+            <div id="personName">{{ persons[0].nom }}</div>
+            <img class="img" id="imageFinal" ng-src="{{ persons[0].url }}"><br>
+            <div id="personDesc">{{ persons[0].desc }}</div>
+            <h1>Voulez vous rejouez?</h1>
+            <div id="controls">
+                <input type="button" id="repeatButton" value="Rejouer" ng-click="replay()">
+                
+            </div>
+        </div>
+
+        <div ng-show="erreurMode" class="ng-hide">
+
+            <div id="personName">Tu ne peux pas me battre!</div>
+            <img class="img" id="imageFinal" src="images/sad.png">
+            <div id="controls">
+            <h1>Voulez vous réssayez?</h1>
+                <input type="button" id="repeatButton" value="Rejouer" ng-click="replay()">
+               
+            </div>
+        </div>
+
+    </div>
+    <div ng-show="menu" class="left-img-container"><img class="img-responsive" src="images/genie2.png"></div>
+    <div ng-show="questionMode" class="left-img-container"><img class="img-responsive" src="images/Genie_KHII.png"></div>
+    <div ng-show="resultMode" class="left-img-container"><img class="img-responsive" src="images/genie1.png"></div>
+
+</body>
+
+</html>
